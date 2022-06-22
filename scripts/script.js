@@ -30,6 +30,7 @@ deleteButton.addEventListener('click', () => {
 
 const buttons = document.querySelectorAll('.keyButton').forEach(button => {
   button.addEventListener('click', () => {
+   removeClass();
    const action = button.dataset.action;
    const buttonContent = button.textContent;
    const displayedNum = calcDisplay.textContent;
@@ -45,14 +46,10 @@ const buttons = document.querySelectorAll('.keyButton').forEach(button => {
    
   }
 
-
-  
   });
 });
 
-
-
-let buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
+const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
   button.addEventListener('click', () => {
     const action = button.dataset.action;
     
@@ -64,14 +61,17 @@ let buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(b
 ) {
   button.classList.add('isDepressed')
 
-
-  
-  
 }
- console.log(button.classList)
-});
+
+  });
 
 });
 
+function removeClass () {
+  const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
+    button.classList.remove('isDepressed')
+
+  });
+}
 
 
