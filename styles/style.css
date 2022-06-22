@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.calcContainer {
+    height: 70%;
+    width: 34%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+     
+}
+
+.buttons {
+    background-color: rgb(0, 0, 0);
+    
+    
+    padding: 8px;
+    height: 60%;
+    width: 52%;
+    
+}
+
+.keyButton, .keyButtonOperation, .keyButtonEquals, .keyButtonClear, .keyButtonDelete {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+
+.keyButtonOperation, .keyButtonEquals, .keyButtonClear, .keyButtonDelete {
+    color: orange;
+}
+
+.output {
+    color: white;
+    border: 1px solid rgb(71, 71, 71);
+    display: flex;
+    width: 100%;
+    height: 20%;
+    margin: 5%;
+    margin-left: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.isDepressed {
+    background-color: rgb(65, 65, 65);
+}
