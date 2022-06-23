@@ -1,4 +1,4 @@
-const add = (a, b) => a + b;
+const add = (buttonContent, displayedNum) => buttonContent + displayedNum;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
@@ -10,65 +10,95 @@ calcDisplay.textContent = '0'
 
 
 // Click events for every button on the calculator //
+function equals() {
 const buttonEquals = document.querySelector('.keyButtonEquals');
 buttonEquals.addEventListener('click', () => {
-  const action = buttonEquals.dataset.action;
-  console.log(action)
-});
+  const buttons = document.querySelectorAll('.keyButton').forEach(button => {
+   const buttonContent = button.textContent;
+   const displayedNum = calcDisplay.textContent; 
+  
+  });
+   
+
+  
+  
+
+
+  });
+}
+
+
 
 const buttonClear = document.querySelector('.keyButtonClear');
 buttonClear.addEventListener('click', () => {
-  const action = buttonClear.dataset.action;
-  console.log(action)
-});
-const deleteButton = document.querySelector('.keyButtonDelete')
-deleteButton.addEventListener('click', () => {
-  const action = deleteButton.dataset.action;
-  buttons.removeChild(buttons)
+  calcDisplay.textContent = '0'
   
 });
+
+
+
+
+
+
 
 const buttons = document.querySelectorAll('.keyButton').forEach(button => {
   button.addEventListener('click', () => {
    removeClass();
+   
    const action = button.dataset.action;
    const buttonContent = button.textContent;
    const displayedNum = calcDisplay.textContent;
+   
    
   
    if (action) {
    if (displayedNum === "0") {
      calcDisplay.textContent = buttonContent;
     } else {
-      calcDisplay.textContent = displayedNum + buttonContent;
-      
+      calcDisplay.textContent = displayedNum + buttonContent;  
    }
    
   }
-
+  
+    
+    
   });
 });
+
+const deleteButton = document.querySelector('.keyButtonDelete')
+deleteButton.addEventListener('click', () => {
+  
+  calcDisplay.textContent.slice(0, -1);
+});
+  
 
 const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
   button.addEventListener('click', () => {
     const action = button.dataset.action;
+    const buttonContent = button.textContent;
+   const displayedNum = calcDisplay.textContent;
     
    
-  if (action === 'add' ||
-  action === 'subtract' ||
-  action === 'multiply' ||
-  action === 'divide'
+  if (action === 'add' && add ||
+  action === 'subtract' && subtract ||
+  action === 'multiply' && multiply ||
+  action === 'divide' && divide
 ) {
   button.classList.add('isDepressed')
-
+  
 }
+
+
+
+
 
   });
 
 });
+console.log (buttonOperation)
 
 function removeClass () {
-  const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
+  buttonRremove = document.querySelectorAll('.keyButtonOperation').forEach(button => {
     button.classList.remove('isDepressed')
 
   });
