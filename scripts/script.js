@@ -62,13 +62,15 @@ const buttons = document.querySelectorAll('.keyButton').forEach(button => {
   
   });
 });
-
+function deleteInput() {
 const deleteButton = document.querySelector('.keyButtonDelete')
 deleteButton.addEventListener('click', () => {
   
-  calcDisplay.textContent.slice(0, -1);
+  calcDisplay.textContent = calcDisplay.textContent.slice(0, -1);
 });
   
+}
+deleteInput()
 
 const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(button => {
   button.addEventListener('click', () => {
