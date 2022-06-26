@@ -41,7 +41,7 @@ button.addEventListener('click', () => {
 
     if (displayedNum === '0') {
       calcDisplay.textContent = num1;
-  } else if (displayedNum === number3) {
+  } else if (displayedNum === num2) {
       calcDisplay.textContent = num1
   } else  {
       calcDisplay.textContent = displayedNum + num1
