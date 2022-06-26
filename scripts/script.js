@@ -55,7 +55,7 @@ button.addEventListener('click', () => {
 const buttonEquals = document.querySelector('.keyButtonEquals');
 buttonEquals.addEventListener('click', () => {
   if(add) {
-    calcDisplay.textContent = parseInt(num1) + parseInt(number3)
+    calcDisplay.textContent = parseInt(num1) + parseInt(num2)
    }
 });
 
