@@ -1,8 +1,10 @@
 const calcDisplay = document.querySelector('.output');
 
 calcDisplay.textContent = '0'
-let num1 = ''
-let num2 = ''
+let num1;
+let num2;
+let number3 = calcDisplay.value
+let buttonValue = calcDisplay.textContent
 
 const add = (a, b) =>  a + b;
 const subtract = (a, b) =>  a - b;
@@ -13,41 +15,51 @@ const divide = (a, b) => a / b;
 
   const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(operator => {
   operator.addEventListener('click', () => {
-  operator.classList.add('isDepressed')
-  const action = operator.dataset.action
+    operator.classList.add('isDepressed')
   
     switch(operator) {
-      case(action === 'add'):
+      case(operator === 'add'):
         return add(a, b)
        
-      case(action === 'substract'):
+      case(operator === 'substract'):
         return subtract(a, b)
 
-      case(action === 'multiply'):
+      case(operator === 'multiply'):
         return multiply(a, b)
 
-      case(action === 'divide'):
+      case(operator === 'divide'):
         return divide(a, b)
         
     }
+    console.log(operator)
+   number3 = calcDisplay.textContent
+   console.log(calcDisplay.textContent)
+      
+    })
     
   });
   
-  }); 
+
   
 
 const buttons = document.querySelectorAll('.keyButton').forEach(button => {
 button.addEventListener('click', () => {
   removeClass();
   equals();
-  buttonValue = button.textContent;
+  num1 = button.textContent
+  num2 = num1;
+  
   displayedNum = calcDisplay.textContent;
   if (displayedNum === '0') {
-    calcDisplay.textContent = buttonValue;
-  } else {
-    calcDisplay.textContent = displayedNum + buttonValue;
+    calcDisplay.textContent = num1;
+  } else if (displayedNum === number3) {
+    calcDisplay.textContent = num1
+  
+    console.log(calcDisplay)
+  } else  {
+    calcDisplay.textContent = displayedNum + num1
+
   }
- 
   });
 
 });
