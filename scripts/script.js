@@ -1,7 +1,7 @@
 const calcDisplay = document.querySelector('.output');
 calcDisplay.textContent = '0'
 
-let num2 = calcDisplay.value
+let num2 = ''
 
 const add = (a, b) =>  a + b;
 const subtract = (a, b) =>  a - b;
@@ -10,27 +10,21 @@ const divide = (a, b) => a / b;
 
 //assigning calculator functions to operators' buttons //
   const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(operator => {
-  operator.addEventListener('click', () => {
-  operator.classList.add('isDepressed')
-  
-    switch(operator) {
-      case(operator === 'add'):
-        return add(a, b)
-       
-      case(operator === 'substract'):
-        return subtract(a, b)
-
-      case(operator === 'multiply'):
-        return multiply(a, b)
-
-      case(operator === 'divide'):
-        return divide(a, b)
-        
-    }  
-
-   num2 = calcDisplay.textContent
+    operator.addEventListener('click', () => {
+      operator.classList.add('isDepressed');
+      operator = operator.dataset.action;
+      num2 = calcDisplay.textContent;
+      if (operator === 'add') {
+        return add;
+      } if (operator === 'subtract') {
+        return subtract;
+      }
+    
+    
+    
+  });
   }) 
-});
+
 
  //an event that make digits appear on the display // 
 const buttons = document.querySelectorAll('.keyButton').forEach(button => {
@@ -54,10 +48,21 @@ button.addEventListener('click', () => {
 
 const buttonEquals = document.querySelector('.keyButtonEquals');
 buttonEquals.addEventListener('click', () => {
-  if(add) {
-    calcDisplay.textContent = parseInt(num1) + parseInt(num2)
-   }
-});
+  num1 = calcDisplay.textContent;
+  document.querySelectorAll('.keyButtonOperation').forEach(operator => {
+  operator = operator.dataset.action
+    if(operator === 'add') {
+      calcDisplay.textContent = parseInt(num1) + parseInt(num2);
+    } else if (operator === 'subtract') {
+      calcDisplay.textContent = parseInt(num1) - parseInt(num2)
+    }
+
+  }); 
+  });
+
+   
+  
+
 
 
 
@@ -88,5 +93,3 @@ function removeClass () {
 
   });
 }
-
-
