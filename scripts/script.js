@@ -1,6 +1,8 @@
 const calcDisplay = document.querySelector('.output');
 calcDisplay.textContent = '0'
-
+let total = 0 
+let oper = ''
+let num1 = ''
 let num2 = ''
 
 const add = (a, b) =>  a + b;
@@ -9,60 +11,55 @@ const multiply = (a, b) =>  a * b;
 const divide = (a, b) => a / b;
 
 //assigning calculator functions to operators' buttons //
-  const buttonOperation = document.querySelectorAll('.keyButtonOperation').forEach(operator => {
-    operator.addEventListener('click', () => {
-      operator.classList.add('isDepressed');
-      operator = operator.dataset.action;
-      num2 = calcDisplay.textContent;
-      if (operator === 'add') {
-        return add;
-      } if (operator === 'subtract') {
-        return subtract;
-      }
-    
-    
-    
-  });
-  }) 
-
-
- //an event that make digits appear on the display // 
 const buttons = document.querySelectorAll('.keyButton').forEach(button => {
-button.addEventListener('click', () => {
-  removeClass();
-  num1 = button.textContent;
-  displayedNum = calcDisplay.textContent;
-
-    if (displayedNum === '0') {
-      calcDisplay.textContent = num1;
-  } else if (displayedNum === num2) {
-      calcDisplay.textContent = num1
-  } else  {
-      calcDisplay.textContent = displayedNum + num1
+  button.addEventListener('click', () => {
+    removeClass()
+  if (calcDisplay.textContent == '0' || (num2 == '' && oper != '')){
+      calcDisplay.textContent = ''
   }
+  if (oper == '' || num1 != ''){   //to allow for bigger then 9 numbers
+      calcDisplay.textContent += button.textContent;
+  }else{
+      calcDisplay.textContent = button.textContent;
+  }
+      
+  if (num1 == '' || oper == '') {
+      num1 = calcDisplay.textContent; 
+  } else {
+      num2 = calcDisplay.textContent; 
+  } 
   
   });
 
-});
+ });
 
-
-const buttonEquals = document.querySelector('.keyButtonEquals');
-buttonEquals.addEventListener('click', () => {
-  num1 = calcDisplay.textContent;
-  document.querySelectorAll('.keyButtonOperation').forEach(operator => {
-  operator = operator.dataset.action
-    if(operator === 'add') {
-      calcDisplay.textContent = parseInt(num1) + parseInt(num2);
-    } else if (operator === 'subtract') {
-      calcDisplay.textContent = parseInt(num1) - parseInt(num2)
-    }
-
-  }); 
-  });
-
-   
-  
-
+    document.querySelectorAll('.keyButtonOperation').forEach(operator => {
+        operator.addEventListener('click', () => {
+        oper = operator.dataset.action
+        operator.classList.add('isDepressed')
+    });
+    });
+    const equalButton = document.querySelector('.keyButtonEquals')
+        equalButton.addEventListener('click', () => {
+        switch (oper){
+          case 'add':
+              total = parseInt(num1) + parseInt(num2);
+              break;
+          case 'subtract':
+              total = parseInt(num1) - parseInt(num2);
+              break;
+          case 'multiply':
+              total = parseInt(num1) * parseInt(num2);
+              break;
+          case 'divide':
+              total = parseInt(num1) / parseInt(num2);
+              break;
+        }
+        calcDisplay.textContent = total;
+        oper = ''
+        num2 = '';
+        num1 = total;
+      });
 
 
 
@@ -72,7 +69,10 @@ buttonEquals.addEventListener('click', () => {
 const buttonClear = document.querySelector('.keyButtonClear');
 buttonClear.addEventListener('click', () => {
   calcDisplay.textContent = '0'
-  // I will fill up the rest of the code here when I get done with the rest //
+  num2 = ''
+  num1 = ''
+  oper = ''
+
   
 });
 
@@ -81,6 +81,10 @@ function deleteInput() {
   const deleteButton = document.querySelector('.keyButtonDelete')
   deleteButton.addEventListener('click', () => {
     calcDisplay.textContent = calcDisplay.textContent.slice(0, -1);
+
+        
+      
+   
 
   });
 }

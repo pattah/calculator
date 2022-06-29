@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    border: 1px solid black;
+    
+   
 }
 
 html {
@@ -9,6 +10,7 @@ html {
 }
 
 body {
+    background-color: rgb(26, 26, 26);
     margin: 0;
     padding: 0;
     min-width: 100%;
@@ -23,8 +25,8 @@ body {
 }
 
 .calcContainer {
-    height: 70%;
-    width: 34%;
+    height: 80%;
+    width: 54%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -34,23 +36,45 @@ body {
 }
 
 .buttons {
+    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(0, 0, 0);
     
-    
-    padding: 8px;
-    height: 60%;
-    width: 52%;
+    font-weight: 500;
+    padding: 11px;
+    padding-right: 0.3rem;
+    height: 70%;
+    width: 42%;
+     
     
 }
 
-.keyButton, .keyButtonOperation, .keyButtonEquals, .keyButtonClear, .keyButtonDelete {
+.keyButton, .keyButtonOperation, .keyButtonClear,.keyButtonEquals, .keyButtonDelete {
+   
+    border: 0.1rem solid rgb(56, 56, 56);
+    margin-top: -1px;
+    margin-left: -1px;
     color: white;
     background-color: black;
     cursor: pointer;
-    height: 60px;
-    width: 60px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 500;
+    height: 18%;
+    width: 20%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+    float: left;
+      
+}
+
+#equalsHeight {
+    width: 59.5%;
+}
+
+#up {
+    
+}
+
+.keyButton:hover, .keyButtonOperation:hover, .keyButtonEquals:hover, .keyButtonClear:hover, .keyButtonDelete:hover {
+    background-color: rgb(65, 65, 65);
 }
 
 .keyButtonOperation, .keyButtonEquals, .keyButtonClear, .keyButtonDelete {
@@ -58,10 +82,16 @@ body {
 }
 
 .output {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0.4rem;
+    font-size: 25px;
+    
     color: white;
     border: 1px solid rgb(71, 71, 71);
     display: flex;
-    width: 100%;
+    width: 98.7%;
     height: 20%;
     margin: 5%;
     margin-left: 0;
